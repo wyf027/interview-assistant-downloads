@@ -25,7 +25,11 @@ jobs:
           $qa = Join-Path $env:RUNNER_TEMP 'interview-assistant-qa'
           New-Item -ItemType Directory -Path $qa | Out-Null
           $installer = Join-Path $qa 'setup.exe'
-          gh release download $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY --pattern '*-win-x64-setup.exe' --output $installer
+          $tag = [uri]::EscapeDataString($env:RELEASE_TAG)
+          $release = Invoke-RestMethod "https://api.github.com/repos/$env:GITHUB_REPOSITORY/releases/tags/$tag"
+          $asset = $release.assets | Where-Object { $_.name -like '*-win-x64-setup.exe' } | Select-Object -First 1
+          if (-not $asset) { throw 'Could not find Windows installer' }
+          curl.exe --fail --location --silent --show-error $asset.browser_download_url --output $installer
           if ($LASTEXITCODE -ne 0) { throw 'Could not download Windows installer' }
           if ((Get-FileHash $installer -Algorithm SHA256).Hash -ne $env:EXPECTED_SHA256) { throw 'Installer checksum differs' }
           $process = Start-Process -FilePath $installer -ArgumentList '/S' -Wait -PassThru
