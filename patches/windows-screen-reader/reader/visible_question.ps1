@@ -1,4 +1,4 @@
-param([long]$Foreground = 0, [long]$Preferred = 0, [string]$PreviousTarget)
+﻿param([long]$Foreground = 0, [long]$Preferred = 0, [string]$PreviousTarget)
 $ErrorActionPreference = 'Stop'
 [Console]::OutputEncoding = [Text.UTF8Encoding]::new($false)
 Add-Type -AssemblyName UIAutomationClient,UIAutomationTypes
