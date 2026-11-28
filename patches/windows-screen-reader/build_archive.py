@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import shutil
 import struct
@@ -43,7 +44,8 @@ def build(original, output):
             file.parent.mkdir(parents=True, exist_ok=True)
             file.write_bytes(baseline)
         subprocess.run(["git", "-c", "apply.whitespace=nowarn", "apply", "--", str(package / "app.patch")],
-                       cwd=work, check=True)
+                       cwd=work, env={**os.environ, "GIT_CEILING_DIRECTORIES": str(work.parent)},
+                       check=True)
         replacements = []
         for name, hashes in assets.items():
             data = (work / name).read_bytes()
