@@ -1,0 +1,18 @@
+{
+  "out/main/index.js": {
+    "baseline_sha256": "cb6aafb3c8f2ca5b3ec368c8c437aab8d17b0e090e3bf0c51c3b2e450487efeb",
+    "patched_sha256": "ec37277e68f98cd6af1355f92eeef361fdeb3cef3255fe235b3b5d7d5bfd0553"
+  },
+  "out/preload/index.js": {
+    "baseline_sha256": "bb3797a1f4911ff7b7858e9a473aa1cd91379968f0331c782ceb59c8c2b1ef49",
+    "patched_sha256": "4c279159c0b68cd5f436f7be98b21c12f722a344b09f7be835aca65d034e19d5"
+  },
+  "out/renderer/assets/index-BWL1FNGx.css": {
+    "baseline_sha256": "a2b803baec17732718b045f7a2602ce750a6b0b25b90d800f8ed543bb1907809",
+    "patched_sha256": "1dd5329613fb03b393f3bb130c3eb86a18756b7af5005913b933826755bb880e"
+  },
+  "out/renderer/assets/index-Dipufj3P.js": {
+    "baseline_sha256": "0178b8331caeddff05bde119e7234d03a1e0a721eb5cea76a90a94cf91f9e182",
+    "patched_sha256": "0f9b11519fd410cef9b8433b4aa902c74a21d7db7a1e94d64da96b5da7255989"
+  }
+}

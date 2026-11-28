@@ -1,0 +1,2 @@
+app.patch -text
+*.ps1 -text
